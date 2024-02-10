@@ -1,16 +1,14 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 'use client'
 
+import { useEffect, useState } from 'react'
+import { usePathname } from 'next/navigation'
 import { cn } from '@/lib/utils'
 import {
   DecodeURLHashed,
   GenerateHTML,
   GenerateURLHashed
 } from '@/lib/function'
-import { useEffect, useState } from 'react'
-import { usePathname } from 'next/navigation'
-import CodeEditor from '@/components/codeEditor'
-
+import CodeEditor from '@/components/code-editor'
 import Aside from '@/components/aside'
 
 export default function Home() {
