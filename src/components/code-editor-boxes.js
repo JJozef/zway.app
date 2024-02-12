@@ -12,9 +12,15 @@ import {
 } from '@/components/ui/tooltip'
 import CodeEditorCode from './code-with-monaco'
 
-export default function CodeEditorBoxes({ html, css, js, preview, setValues }) {
+export default function CodeEditorBoxes({
+  html,
+  css,
+  js,
+  preview,
+  handleInputChange
+}) {
   const handleSetValue = (value, target) => {
-    return setValues(value, target)
+    return handleInputChange(value, target)
   }
 
   return (

@@ -1,6 +1,7 @@
 'use client'
 
 import { Button } from './ui/button'
+import { Badge } from './ui/badge'
 import {
   Menubar,
   MenubarContent,
@@ -23,7 +24,6 @@ import {
 import Link from 'next/link'
 import ModalDependencies from './modal-dependencies'
 import SheetEditorSettings from './sheet-editor-settings'
-import { Badge } from './ui/badge'
 
 export default function MenubarNavigation() {
   return (

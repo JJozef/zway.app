@@ -9,6 +9,10 @@ export default function CodeEditorTabs({
   htmlTemplate,
   handleInputChange
 }) {
+  const handleSetValue = (value, target) => {
+    return handleInputChange(value, target)
+  }
+
   return (
     <Tabs defaultValue='html' className='flex flex-col grow'>
       <TabsList className='w-full justify-start rounded-none border-b border-b-zinc-950'>
@@ -38,7 +42,7 @@ export default function CodeEditorTabs({
       >
         <CodeEditorCode
           language='html'
-          setValues={handleInputChange}
+          setValue={handleSetValue}
           value={html}
         />
       </TabsContent>
@@ -46,11 +50,7 @@ export default function CodeEditorTabs({
         value='css'
         className='grow m-0 h-full w-full [&>.monaco-editor]:w-[100%_!important]'
       >
-        <CodeEditorCode
-          language='css'
-          setValues={handleInputChange}
-          value={css}
-        />
+        <CodeEditorCode language='css' setValue={handleSetValue} value={css} />
       </TabsContent>
       <TabsContent
         value='javascript'
@@ -58,7 +58,7 @@ export default function CodeEditorTabs({
       >
         <CodeEditorCode
           language='javascript'
-          setValues={handleInputChange}
+          setValue={handleSetValue}
           value={js}
         />
       </TabsContent>

@@ -4,6 +4,7 @@ import { Inter as FontSans } from 'next/font/google'
 import { cn } from '@/lib/utils'
 
 import { ThemeProvider } from '@/provider/theme-provider'
+
 import EditorConfigsProvider from '@/provider/editor-configs-provider'
 import MenubarNavigation from '@/components/menubar-navigation'
 
@@ -14,7 +15,8 @@ export const fontSans = FontSans({
 
 export const metadata = {
   title: 'zway.app | Real-time HTML, CSS, JavaScript Playground',
-  description: 'Your go-to web playground for HTML, CSS, and JavaScript. Code, tweak, and visualize your creations instantly with our live editor.'
+  description:
+    'Your go-to web playground for HTML, CSS, and JavaScript. Code, tweak, and visualize your creations instantly with our live editor.'
 }
 
 export default function RootLayout({ children }) {

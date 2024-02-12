@@ -64,7 +64,7 @@ export default function Home() {
         css={css}
         js={js}
         preview={htmlTemplate}
-        setValues={handleInputChange}
+        handleInputChange={handleInputChange}
       />
     )
   }
