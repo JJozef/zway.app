@@ -12,7 +12,7 @@ import {
 } from '@/components/ui/tooltip'
 import CodeEditorCode from './code-with-monaco'
 
-export default function CodeEditor({ html, css, js, preview, setValues }) {
+export default function CodeEditorBoxes({ html, css, js, preview, setValues }) {
   const handleSetValue = (value, target) => {
     return setValues(value, target)
   }
@@ -102,7 +102,7 @@ export default function CodeEditor({ html, css, js, preview, setValues }) {
           />
           <ResizablePanel defaultSize={50}>
             <iframe
-              className='h-full p-2 w-full outline-none resize-none bg-zinc-100'
+              className='h-full w-full outline-none resize-none bg-zinc-100'
               srcDoc={preview}
               title='iframe'
             />

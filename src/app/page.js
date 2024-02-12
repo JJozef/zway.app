@@ -2,24 +2,28 @@
 
 import { useEffect, useState } from 'react'
 import { usePathname } from 'next/navigation'
-import { cn } from '@/lib/utils'
 import { useDebounce } from 'use-debounce'
+import { useMediaQuery } from '@/lib/hooks/use-media-query'
+import { useEditorContext } from '@/context/editor-configs'
+import { EDITOR_LAYOUTS } from '@/lib/contants'
 import {
   DecodeURLHashed,
   GenerateHTML,
   GenerateURLHashed
 } from '@/lib/function'
-import CodeEditor from '@/components/code-editor'
-import MenubarNavigation from '@/components/menubar-navigation'
+import CodeEditorBoxes from '@/components/code-editor-boxes'
+import CodeEditorTabs from '@/components/code-editor-tabs'
 
 export default function Home() {
   const pathname = usePathname()
+  const isDesktop = useMediaQuery('(min-width: 768px)')
 
   const [html, setHtml] = useState('')
   const [css, setCss] = useState('')
   const [js, setJs] = useState('')
   const [htmlTemplate, setHtmlTemplate] = useState('')
   const [url] = useDebounce(GenerateURLHashed({ html, css, js }), 200)
+  const { layoutEditors } = useEditorContext()?.editorState
 
   const handleInputChange = (value, target) => {
     if (target === 'html') return setHtml(value)
@@ -53,16 +57,25 @@ export default function Home() {
     )
   }, [pathname])
 
-  return (
-    <main className={cn('h-full flex flex-col')}>
-      <MenubarNavigation />
-      <CodeEditor
+  if (isDesktop && layoutEditors === EDITOR_LAYOUTS.boxes) {
+    return (
+      <CodeEditorBoxes
         html={html}
         css={css}
         js={js}
         preview={htmlTemplate}
         setValues={handleInputChange}
       />
-    </main>
+    )
+  }
+
+  return (
+    <CodeEditorTabs
+      html={html}
+      css={css}
+      js={js}
+      htmlTemplate={htmlTemplate}
+      handleInputChange={handleInputChange}
+    />
   )
 }

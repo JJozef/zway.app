@@ -10,6 +10,11 @@ export const EDITOR_OPTIONS = [
   'preservegrid'
 ]
 
+export const EDITOR_LAYOUTS = {
+  boxes: 'boxes',
+  tabs: 'tabs'
+}
+
 export const DEFAULT_EDITOR_STATE = {
   fontFamily:
     "'Cascadia Code PL', 'Menlo', 'Monaco', 'Courier New', 'monospace'",
@@ -31,5 +36,6 @@ export const DEFAULT_EDITOR_STORAGE_STATE = {
   fontLigatures: true,
   preservegrid: true,
   zipFileName: 'zway.app',
-  saveLocalstorage: true
+  saveLocalstorage: true,
+  layoutEditors: EDITOR_LAYOUTS.boxes
 }

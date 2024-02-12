@@ -27,6 +27,8 @@ import {
   SelectTrigger,
   SelectValue
 } from '@/components/ui/select'
+import { EDITOR_LAYOUTS } from '@/lib/contants'
+import { cn } from '@/lib/utils'
 
 export default function SheetEditorSettings({ children }) {
   const { editorState, setEditorState } = useEditorContext()
@@ -42,7 +44,8 @@ export default function SheetEditorSettings({ children }) {
       preservegrid: editorState.preservegrid,
       tabSize: editorState.tabSize,
       zipFileName: editorState.zipFileName,
-      saveLocalstorage: editorState.saveLocalstorage
+      saveLocalstorage: editorState.saveLocalstorage,
+      layoutEditors: editorState.layoutEditors
     }
   })
 
@@ -57,7 +60,8 @@ export default function SheetEditorSettings({ children }) {
       preservegrid: values.preservegrid,
       tabSize: values.tabSize,
       zipFileName: values.zipFileName,
-      saveLocalstorage: values.saveLocalstorage
+      saveLocalstorage: values.saveLocalstorage,
+      layoutEditors: values.layoutEditors
     }
 
     setEditorState(valuesToSave)
@@ -73,6 +77,74 @@ export default function SheetEditorSettings({ children }) {
         <div className='pt-5 px-px overflow-auto max-h-[calc(100%-10px)]'>
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className='space-y-4'>
+              <FormField
+                control={form.control}
+                name='layoutEditors'
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>
+                      <Badge className='px-1 text-xs mr-1' variant='secondary'>
+                        Editor:
+                      </Badge>
+                      Layout
+                    </FormLabel>
+                    <FormControl>
+                      <div className='flex items-center justify-start gap-2 px-2'>
+                        <button
+                          className={cn(
+                            'grid grid-rows-2 w-fit gap-[2px] size-6 border-0 outline-none focus:outline-none hover:ring-2 ring-offset-1 ring-offset-zinc-900 ring-white',
+                            field.value === EDITOR_LAYOUTS.boxes &&
+                              'ring-2 ring-offset-1 ring-offset-zinc-900 ring-white'
+                          )}
+                          onClick={() => field.onChange(EDITOR_LAYOUTS.boxes)}
+                          type='button'
+                          title='Boxes Layout'
+                        >
+                          <div className='flex items-center gap-px'>
+                            <div className='size-3 rounded-[2px] bg-red-400' />
+                            <div className='size-3 rounded-[2px] bg-blue-400' />
+                          </div>
+                          <div className='flex items-center gap-px'>
+                            <div className='size-3 rounded-[2px] bg-yellow-400' />
+                            <div className='size-3 rounded-[2px] bg-white' />
+                          </div>
+                        </button>
+                        <button
+                          className={cn(
+                            'grid grid-rows-2 w-fit gap-px size-6 border-0 outline-none focus:outline-none hover:ring-2 ring-offset-1 ring-offset-zinc-900 ring-white',
+                            field.value === EDITOR_LAYOUTS.tabs &&
+                              'ring-2 ring-offset-1 ring-offset-zinc-900 ring-white'
+                          )}
+                          onClick={() => field.onChange(EDITOR_LAYOUTS.tabs)}
+                          type='button'
+                          title='Tabs Layout'
+                        >
+                          <div className='flex flex-row justify-between items-center gap-px w-6 h-[10px] border-2 border-white rounded-[2px] px-px'>
+                            <div className='w-1 h-1 bg-red-400 rounded-[1px]' />
+                            <div className='w-1 h-1 bg-blue-400 rounded-[1px]' />
+                            <div className='w-1 h-1 bg-yellow-400 rounded-[1px]' />
+                            <div className='w-1 h-1 bg-white rounded-[1px]' />
+                          </div>
+                          <div className='w-6 p-px rounded-[2px] bg-gradient-to-r from-red-400 via-blue-400 to-yellow-400'>
+                            <div className='size-full flex items-center justify-center p-px bg-white rounded-[2px]'>
+                              <code className='leading-normal text-black select-none truncate'>
+                                <h1 className='text-[3px] text-center'>
+                                  My Code
+                                </h1>
+                                <p className='text-[2px]'>
+                                  Lorem ipsum dolor sit amet
+                                </p>
+                              </code>
+                            </div>
+                          </div>
+                        </button>
+                      </div>
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
               <FormField
                 control={form.control}
                 name='theme'
@@ -397,8 +469,8 @@ export default function SheetEditorSettings({ children }) {
                 )}
               />
 
-              <div className='flex justify-end'>
-                <Button type='submit'>
+              <div className='sticky bottom-0 left-0'>
+                <Button className='w-full' type='submit'>
                   <SettingsIcon className='w-4 h-4 min-w-4 mr-2' />
                   Save Settings
                 </Button>
