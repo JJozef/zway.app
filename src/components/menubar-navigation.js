@@ -45,20 +45,32 @@ export default function MenubarNavigation() {
               New Tab <MenubarShortcut>⌘T</MenubarShortcut>
             </MenubarItem>
             <MenubarSeparator />
-            <MenubarItem className='flex items-center gap-2 cursor-pointer' disabled>
+            <MenubarItem
+              className='flex items-center gap-2 cursor-pointer'
+              disabled
+            >
               <TerminalIcon2 className='w-4 h-4 min-w-4' />
               Terminal
             </MenubarItem>
-            <MenubarItem className='flex items-center gap-2 cursor-pointer' disabled>
+            <MenubarItem
+              className='flex items-center gap-2 cursor-pointer'
+              disabled
+            >
               <CopyIcon className='w-4 h-4 min-w-4 ' />
               Copy
             </MenubarItem>
-            <MenubarItem className='flex items-center gap-2 cursor-pointer' disabled>
+            <MenubarItem
+              className='flex items-center gap-2 cursor-pointer'
+              disabled
+            >
               <DownloadIcon className='w-4 h-4 min-w-4' />
               Download
             </MenubarItem>
             <MenubarSeparator />
-            <MenubarItem className='flex items-center gap-2 cursor-pointer' disabled>
+            <MenubarItem
+              className='flex items-center gap-2 cursor-pointer'
+              disabled
+            >
               <ArrowUpRightSquareIcon className='w-4 h-4 min-w-4' />
               Preview
             </MenubarItem>
@@ -66,7 +78,10 @@ export default function MenubarNavigation() {
         </MenubarMenu>
         <MenubarMenu>
           <ModalDependencies>
-            <MenubarTrigger className='flex items-center gap-2 py-1.5 px-3 cursor-pointer' disabled>
+            <MenubarTrigger
+              className='flex items-center gap-2 py-1.5 px-3 cursor-pointer'
+              disabled
+            >
               <div className='flex items-center gap-1.5'>
                 <BlocksIcon className='w-4 h-4 min-w-4 stroke-[2]' />
                 Dependencies
@@ -91,6 +106,8 @@ export default function MenubarNavigation() {
             className='group cursor-pointer'
             rel='noopener noreferrer'
             target='_blank'
+            role='menuitem'
+            aria-label='GitHub repository of the project'
           >
             <GitHubIcon className='w-4 h-4 min-w-4 stroke-[2] group-hover:scale-110 transition-transform duration-200' />
           </Link>
