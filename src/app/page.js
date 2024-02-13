@@ -1,21 +1,20 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { usePathname } from 'next/navigation'
 import { useDebounce } from 'use-debounce'
 import { useMediaQuery } from '@/lib/hooks/use-media-query'
 import { useEditorContext } from '@/context/editor-configs'
+import { useCurrentURLValues } from '@/lib/hooks/use-current-url-values'
 import { EDITOR_LAYOUTS } from '@/lib/contants'
 import {
-  DecodeURLHashed,
   GenerateHTML,
-  GenerateURLHashed
+  GenerateURLHashed,
+  ReplaceStateURL
 } from '@/lib/function'
 import CodeEditorBoxes from '@/components/code-editor-boxes'
 import CodeEditorTabs from '@/components/code-editor-tabs'
 
 export default function Home() {
-  const pathname = usePathname()
   const isDesktop = useMediaQuery('(min-width: 768px)')
 
   const [html, setHtml] = useState('')
@@ -26,36 +25,35 @@ export default function Home() {
   const { layoutEditors } = useEditorContext()?.editorState
 
   const handleInputChange = (value, target) => {
-    if (target === 'html') return setHtml(value)
-    if (target === 'css') return setCss(value)
-    if (target === 'javascript') return setJs(value)
+    switch (target) {
+      case 'html':
+        return setHtml(value)
+      case 'css':
+        return setCss(value)
+      case 'javascript':
+        return setJs(value)
+    }
   }
 
   useEffect(() => {
     setHtmlTemplate(GenerateHTML({ html, css, js }))
-    history.replaceState('', '', `/${url}`)
+    ReplaceStateURL(url)
   }, [html, css, js, url])
 
+  const {
+    html: decodedHtml,
+    css: decodedCss,
+    js: decodedJs
+  } = useCurrentURLValues()
+
   useEffect(() => {
-    if (!pathname || pathname.startsWith('%7C')) return
-
-    const [htmlRaw, cssRaw, jsRaw] = pathname.slice(1)?.split('%7C')
-
-    const html = DecodeURLHashed(htmlRaw)
-    const css = DecodeURLHashed(cssRaw)
-    const js = DecodeURLHashed(jsRaw)
-
-    setHtml(html)
-    setCss(css)
-    setJs(js)
+    setHtml(decodedHtml)
+    setCss(decodedCss)
+    setJs(decodedJs)
     setHtmlTemplate(
-      GenerateHTML({
-        html,
-        css,
-        js
-      })
+      GenerateHTML({ html: decodedHtml, css: decodedCss, js: decodedJs })
     )
-  }, [pathname])
+  }, [decodedHtml, decodedCss, decodedJs])
 
   if (isDesktop && layoutEditors === EDITOR_LAYOUTS.boxes) {
     return (
@@ -74,7 +72,7 @@ export default function Home() {
       html={html}
       css={css}
       js={js}
-      htmlTemplate={htmlTemplate}
+      preview={htmlTemplate}
       handleInputChange={handleInputChange}
     />
   )

@@ -6,7 +6,7 @@ export default function CodeEditorTabs({
   html,
   css,
   js,
-  htmlTemplate,
+  preview,
   handleInputChange
 }) {
   const handleSetValue = (value, target) => {
@@ -68,8 +68,8 @@ export default function CodeEditorTabs({
       >
         <iframe
           className='h-full w-full outline-none resize-none bg-zinc-100'
-          srcDoc={htmlTemplate}
-          title='iframe'
+          srcDoc={preview}
+          title='Preview of the code'
         />
       </TabsContent>
     </Tabs>

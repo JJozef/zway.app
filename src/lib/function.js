@@ -27,3 +27,11 @@ export function DecodeURLHashed(encoded) {
   if (!encoded) return ''
   return decode(encoded)
 }
+
+export const ReplaceStateURL = (url) => {
+  return window.history.replaceState(
+    { ...window.history.state, as: url, url },
+    '',
+    url
+  )
+}
