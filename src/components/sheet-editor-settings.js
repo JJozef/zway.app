@@ -41,7 +41,6 @@ export default function SheetEditorSettings({ children }) {
       fontSize: editorState.fontSize,
       minimap: editorState.minimap,
       fontLigatures: editorState.fontLigatures,
-      preservegrid: editorState.preservegrid,
       tabSize: editorState.tabSize,
       zipFileName: editorState.zipFileName,
       saveLocalstorage: editorState.saveLocalstorage,
@@ -57,7 +56,6 @@ export default function SheetEditorSettings({ children }) {
       fontSize: Number(values.fontSize),
       minimap: values.minimap,
       fontLigatures: values.fontLigatures,
-      preservegrid: values.preservegrid,
       tabSize: values.tabSize,
       zipFileName: values.zipFileName,
       saveLocalstorage: values.saveLocalstorage,
@@ -70,11 +68,11 @@ export default function SheetEditorSettings({ children }) {
   return (
     <Sheet>
       <SheetTrigger asChild>{children}</SheetTrigger>
-      <SheetContent>
-        <SheetHeader>
+      <SheetContent className='p-0'>
+        <SheetHeader className='px-4 py-5'>
           <SheetTitle>Editor Settings</SheetTitle>
         </SheetHeader>
-        <div className='pt-5 px-px overflow-auto max-h-[calc(100%-10px)]'>
+        <div className='px-4 pt-2 overflow-auto max-h-[calc(100%-67px)]'>
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className='space-y-4'>
               <FormField
@@ -377,7 +375,7 @@ export default function SheetEditorSettings({ children }) {
 
               <FormField
                 control={form.control}
-                name='preservegrid'
+                name='saveLocalstorage'
                 render={({ field }) => (
                   <FormItem>
                     <FormControl>
@@ -387,9 +385,9 @@ export default function SheetEditorSettings({ children }) {
                             className='px-1 text-xs mr-1'
                             variant='secondary'
                           >
-                            Editor:
+                            Auto save:
                           </Badge>
-                          Preserve Grid
+                          Local storage
                         </FormLabel>
                         <div className='flex items-center gap-2'>
                           <Checkbox
@@ -399,7 +397,8 @@ export default function SheetEditorSettings({ children }) {
                             checked={field.value}
                           />
                           <FormLabel className='text-xs'>
-                            Preserve grid layout
+                            Automatically save URL to local storage for fast
+                            content loading
                           </FormLabel>
                         </div>
                       </div>
@@ -434,42 +433,7 @@ export default function SheetEditorSettings({ children }) {
                 )}
               />
 
-              <FormField
-                control={form.control}
-                name='saveLocalstorage'
-                render={({ field }) => (
-                  <FormItem>
-                    <FormControl>
-                      <div className='flex flex-col gap-2'>
-                        <FormLabel>
-                          <Badge
-                            className='px-1 text-xs mr-1'
-                            variant='secondary'
-                          >
-                            Auto save:
-                          </Badge>
-                          Local storage
-                        </FormLabel>
-                        <div className='flex items-center gap-2'>
-                          <Checkbox
-                            onCheckedChange={(value) => {
-                              field.onChange(value)
-                            }}
-                            checked={field.value}
-                          />
-                          <FormLabel className='text-xs'>
-                            Automatically save URL to local storage for fast
-                            content loading
-                          </FormLabel>
-                        </div>
-                      </div>
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-
-              <div className='sticky bottom-0 left-0'>
+              <div className='sticky bottom-0 left-0 py-2 bg-background'>
                 <Button className='w-full' type='submit'>
                   <SettingsIcon className='w-4 h-4 min-w-4 mr-2' />
                   Save Settings

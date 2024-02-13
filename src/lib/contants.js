@@ -6,8 +6,7 @@ export const EDITOR_OPTIONS = [
   'minimap',
   'theme',
   'wordWrap',
-  'fontLigatures',
-  'preservegrid'
+  'fontLigatures'
 ]
 
 export const EDITOR_LAYOUTS = {
@@ -34,7 +33,6 @@ export const DEFAULT_EDITOR_STORAGE_STATE = {
   theme: 'vs-dark',
   wordWrap: 'on',
   fontLigatures: true,
-  preservegrid: true,
   zipFileName: 'zway.app',
   saveLocalstorage: true,
   layoutEditors: EDITOR_LAYOUTS.boxes
