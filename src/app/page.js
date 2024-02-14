@@ -1,9 +1,11 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 'use client'
 
 import { useEffect, useState } from 'react'
 import { useDebounce } from 'use-debounce'
 import { useMediaQuery } from '@/lib/hooks/use-media-query'
 import { useEditorContext } from '@/context/editor-configs'
+import { useAppSharedDataContext } from '@/context/app-shared-data'
 import { useCurrentURLValues } from '@/lib/hooks/use-current-url-values'
 import { EDITOR_LAYOUTS } from '@/lib/contants'
 import {
@@ -13,32 +15,30 @@ import {
 } from '@/lib/function'
 import CodeEditorBoxes from '@/components/code-editor-boxes'
 import CodeEditorTabs from '@/components/code-editor-tabs'
+import GenerateBlobURL from '@/lib/hooks/use-generate-blob-url'
 
 export default function Home() {
   const isDesktop = useMediaQuery('(min-width: 768px)')
-
-  const [html, setHtml] = useState('')
-  const [css, setCss] = useState('')
-  const [js, setJs] = useState('')
-  const [htmlTemplate, setHtmlTemplate] = useState('')
-  const [url] = useDebounce(GenerateURLHashed({ html, css, js }), 200)
   const { layoutEditors } = useEditorContext()?.editorState
+  const { setSharedData } = useAppSharedDataContext()
+
+  const [code, setCode] = useState({ html: '', css: '', js: '' })
+  const [url] = useDebounce(GenerateURLHashed(code), 200)
+  const urlBlob = GenerateBlobURL({ html: GenerateHTML(code) })
 
   const handleInputChange = (value, target) => {
-    switch (target) {
-      case 'html':
-        return setHtml(value)
-      case 'css':
-        return setCss(value)
-      case 'javascript':
-        return setJs(value)
-    }
+    setCode((prevCode) => ({ ...prevCode, [target]: value }))
   }
 
   useEffect(() => {
-    setHtmlTemplate(GenerateHTML({ html, css, js }))
     ReplaceStateURL(url)
-  }, [html, css, js, url])
+
+    setSharedData((prevSharedData) => ({
+      ...prevSharedData,
+      url,
+      urlBlob
+    }))
+  }, [code, url])
 
   const {
     html: decodedHtml,
@@ -47,21 +47,16 @@ export default function Home() {
   } = useCurrentURLValues()
 
   useEffect(() => {
-    setHtml(decodedHtml)
-    setCss(decodedCss)
-    setJs(decodedJs)
-    setHtmlTemplate(
-      GenerateHTML({ html: decodedHtml, css: decodedCss, js: decodedJs })
-    )
+    setCode({ html: decodedHtml, css: decodedCss, js: decodedJs })
   }, [decodedHtml, decodedCss, decodedJs])
 
   if (isDesktop && layoutEditors === EDITOR_LAYOUTS.boxes) {
     return (
       <CodeEditorBoxes
-        html={html}
-        css={css}
-        js={js}
-        preview={htmlTemplate}
+        html={code.html}
+        css={code.css}
+        js={code.js}
+        preview={urlBlob}
         handleInputChange={handleInputChange}
       />
     )
@@ -69,10 +64,10 @@ export default function Home() {
 
   return (
     <CodeEditorTabs
-      html={html}
-      css={css}
-      js={js}
-      preview={htmlTemplate}
+      html={code.html}
+      css={code.css}
+      js={code.js}
+      preview={urlBlob}
       handleInputChange={handleInputChange}
     />
   )

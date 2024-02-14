@@ -1,7 +1,8 @@
+/* eslint-disable multiline-ternary */
 'use client'
 
 import { Button } from './ui/button'
-import { Badge } from './ui/badge'
+import { useAppSharedDataContext } from '@/context/app-shared-data'
 import {
   Menubar,
   MenubarContent,
@@ -14,31 +15,35 @@ import {
 import {
   ArrowUpRightSquareIcon,
   BlocksIcon,
-  CopyIcon,
+  CheckIcon,
   DownloadIcon,
   GitHubIcon,
   PanelsTopLeftIcon,
+  ScreenShareIcon,
   SettingsIcon,
   TerminalIcon2
 } from '@/components/ui/icons'
 import Link from 'next/link'
 import ModalDependencies from './modal-dependencies'
 import SheetEditorSettings from './sheet-editor-settings'
+import useCopyToClipboard from '@/lib/hooks/use-copy-to-clipboard'
 
 export default function MenubarNavigation() {
+  const { sharedData } = useAppSharedDataContext()
+  const { copied, copyToClipboard } = useCopyToClipboard()
+
+  const copyLink = (e) => {
+    e.preventDefault()
+    return copyToClipboard(`https://zway.vercel.app/${sharedData.url}`)
+  }
+
   return (
-    <Menubar className='h-auto flex items-center justify-between w-full rounded-none border-0 bg-neutral-950 border-b border-neutral-950 overflow-y-hidden overflow-x-auto'>
+    <Menubar className='min-h-10 h-auto flex items-center justify-between w-full rounded-none border-0 bg-neutral-950 border-b border-neutral-950 overflow-y-hidden overflow-x-auto'>
       <div className='flex items-center'>
         <MenubarMenu>
-          <MenubarTrigger
-            className='flex items-center gap-2 py-1.5 px-3 cursor-pointer'
-            disabled
-          >
-            <div className='flex items-center gap-1.5'>
-              <PanelsTopLeftIcon className='w-4 h-4 min-w-4 stroke-[2]' />
-              Editor
-            </div>
-            <Badge className='px-1 py-px h-auto'>Soon</Badge>
+          <MenubarTrigger className='flex items-center gap-2 py-1.5 px-3 cursor-pointer'>
+            <PanelsTopLeftIcon className='w-4 h-4 min-w-4 stroke-[2]' />
+            Editor
           </MenubarTrigger>
           <MenubarContent>
             <MenubarItem className='cursor-pointer' disabled>
@@ -56,37 +61,47 @@ export default function MenubarNavigation() {
               className='flex items-center gap-2 cursor-pointer'
               disabled
             >
-              <CopyIcon className='w-4 h-4 min-w-4 ' />
-              Copy
-            </MenubarItem>
-            <MenubarItem
-              className='flex items-center gap-2 cursor-pointer'
-              disabled
-            >
               <DownloadIcon className='w-4 h-4 min-w-4' />
               Download
             </MenubarItem>
-            <MenubarSeparator />
             <MenubarItem
               className='flex items-center gap-2 cursor-pointer'
-              disabled
+              onClick={copyLink}
+              disabled={!sharedData.url}
             >
-              <ArrowUpRightSquareIcon className='w-4 h-4 min-w-4' />
-              Preview
+              {copied ? (
+                <>
+                  <CheckIcon className='w-4 h-4 min-w-4' />
+                  Copied
+                </>
+              ) : (
+                <>
+                  <ArrowUpRightSquareIcon className='w-4 h-4 min-w-4' />
+                  Share
+                </>
+              )}
+            </MenubarItem>
+            <MenubarItem
+              className='flex items-center gap-2 cursor-pointer'
+              asChild
+            >
+              <Link
+                href={sharedData.urlBlob}
+                target='_blank'
+                rel='noopener noreferrer'
+                disabled={!sharedData.urlBlob}
+              >
+                <ScreenShareIcon className='w-4 h-4 min-w-4' />
+                Preview
+              </Link>
             </MenubarItem>
           </MenubarContent>
         </MenubarMenu>
         <MenubarMenu>
           <ModalDependencies>
-            <MenubarTrigger
-              className='flex items-center gap-2 py-1.5 px-3 cursor-pointer'
-              disabled
-            >
-              <div className='flex items-center gap-1.5'>
-                <BlocksIcon className='w-4 h-4 min-w-4 stroke-[2]' />
-                Dependencies
-              </div>
-              <Badge className='px-1 py-px h-auto'>Soon</Badge>
+            <MenubarTrigger className='flex items-center gap-2 py-1.5 px-3 cursor-pointer'>
+              <BlocksIcon className='w-4 h-4 min-w-4 stroke-[2]' />
+              Dependencies
             </MenubarTrigger>
           </ModalDependencies>
         </MenubarMenu>

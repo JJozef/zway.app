@@ -109,7 +109,7 @@ export default function CodeEditorBoxes({
           <ResizablePanel defaultSize={50}>
             <iframe
               className='h-full w-full outline-none resize-none bg-zinc-100'
-              srcDoc={preview}
+              src={preview}
               title='Preview of the code'
             />
           </ResizablePanel>

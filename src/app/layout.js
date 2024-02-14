@@ -5,7 +5,7 @@ import { cn } from '@/lib/utils'
 
 import { ThemeProvider } from '@/provider/theme-provider'
 
-import EditorConfigsProvider from '@/provider/editor-configs-provider'
+import AppProviders from '@/provider/app-providers'
 import MenubarNavigation from '@/components/menubar-navigation'
 
 export const fontSans = FontSans({
@@ -35,12 +35,12 @@ export default function RootLayout({ children }) {
           enableSystem
           disableTransitionOnChange
         >
-          <EditorConfigsProvider>
+          <AppProviders>
             <main className={cn('h-full flex flex-col')}>
               <MenubarNavigation />
               {children}
             </main>
-          </EditorConfigsProvider>
+          </AppProviders>
         </ThemeProvider>
       </body>
     </html>
