@@ -22,7 +22,7 @@ export default function Home() {
   const { layoutEditors } = useEditorContext()?.editorState
   const { setSharedData } = useAppSharedDataContext()
 
-  const [code, setCode] = useState({ html: '', css: '', js: '' })
+  const [code, setCode] = useState({ html: '', css: '', javascript: '' })
   const [url] = useDebounce(GenerateURLHashed(code), 200)
   const urlBlob = GenerateBlobURL({ html: GenerateHTML(code) })
 
@@ -47,7 +47,7 @@ export default function Home() {
   } = useCurrentURLValues()
 
   useEffect(() => {
-    setCode({ html: decodedHtml, css: decodedCss, js: decodedJs })
+    setCode({ html: decodedHtml, css: decodedCss, javascript: decodedJs })
   }, [decodedHtml, decodedCss, decodedJs])
 
   if (isDesktop && layoutEditors === EDITOR_LAYOUTS.boxes) {
@@ -55,7 +55,7 @@ export default function Home() {
       <CodeEditorBoxes
         html={code.html}
         css={code.css}
-        js={code.js}
+        js={code.javascript}
         preview={urlBlob}
         handleInputChange={handleInputChange}
       />
@@ -66,7 +66,7 @@ export default function Home() {
     <CodeEditorTabs
       html={code.html}
       css={code.css}
-      js={code.js}
+      js={code.javascript}
       preview={urlBlob}
       handleInputChange={handleInputChange}
     />

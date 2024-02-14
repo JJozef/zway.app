@@ -1,6 +1,6 @@
 import { encode, decode } from 'js-base64'
 
-export function GenerateHTML({ html, css, js }) {
+export function GenerateHTML({ html, css, javascript }) {
   return `
     <!DOCTYPE html>
     <html lang='en' suppressHydrationWarning>
@@ -13,14 +13,14 @@ export function GenerateHTML({ html, css, js }) {
         ${html}
       </body>
         <script>
-            ${js}
+            ${javascript}
         </script>
     </html>
     `
 }
 
-export function GenerateURLHashed({ html, css, js }) {
-  return `${encode(html || '')}|${encode(css || '')}|${encode(js || '')}`
+export function GenerateURLHashed({ html, css, javascript }) {
+  return `${encode(html || '')}|${encode(css || '')}|${encode(javascript || '')}`
 }
 
 export function DecodeURLHashed(encoded) {
