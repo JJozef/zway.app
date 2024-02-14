@@ -90,6 +90,7 @@ export default function MenubarNavigation() {
                 target='_blank'
                 rel='noopener noreferrer'
                 disabled={!sharedData.urlBlob}
+                prefetch={false}
               >
                 <ScreenShareIcon className='w-4 h-4 min-w-4' />
                 Preview
