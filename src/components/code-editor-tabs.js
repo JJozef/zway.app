@@ -38,7 +38,7 @@ export default function CodeEditorTabs({
       </TabsList>
       <TabsContent
         value='html'
-        className='grow m-0 h-full w-full [&>.monaco-editor]:w-[100%_!important]'
+        className='grow m-0 h-full w-full [&>section_>_div_>_.monaco-editor]:w-[100%_!important] [&>section_>_div_>_.monaco-editor]:h-[100%_!important]'
       >
         <CodeEditorCode
           language='html'
@@ -48,13 +48,13 @@ export default function CodeEditorTabs({
       </TabsContent>
       <TabsContent
         value='css'
-        className='grow m-0 h-full w-full [&>.monaco-editor]:w-[100%_!important]'
+        className='grow m-0 h-full w-full [&>section_>_div_>_.monaco-editor]:w-[100%_!important] [&>section_>_div_>_.monaco-editor]:h-[100%_!important]'
       >
         <CodeEditorCode language='css' setValue={handleSetValue} value={css} />
       </TabsContent>
       <TabsContent
         value='javascript'
-        className='grow m-0 h-full w-full [&>.monaco-editor]:w-[100%_!important]'
+        className='grow m-0 h-full w-full [&>section_>_div_>_.monaco-editor]:w-[100%_!important] [&>section_>_div_>_.monaco-editor]:h-[100%_!important]'
       >
         <CodeEditorCode
           language='javascript'
@@ -64,7 +64,7 @@ export default function CodeEditorTabs({
       </TabsContent>
       <TabsContent
         value='preview'
-        className='grow m-0 h-full w-full [&>.monaco-editor]:w-[100%_!important]'
+        className='grow m-0 h-full w-full'
       >
         <iframe
           className='h-full w-full outline-none resize-none bg-zinc-100'
