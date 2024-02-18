@@ -3,18 +3,18 @@ import { encode, decode } from 'js-base64'
 export function GenerateHTML({ html, css, javascript }) {
   return `
     <!DOCTYPE html>
-    <html lang='en' suppressHydrationWarning>
+    <html lang='en'>
       <head>
-        <style>
-          ${css}
-        </style>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <style>${css}</style>
       </head>
       <body>
         ${html}
-      </body>
-        <script>
-            ${javascript}
+        <script type="module">
+          ${javascript}
         </script>
+      </body>
     </html>
     `
 }
