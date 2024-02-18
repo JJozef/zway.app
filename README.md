@@ -8,7 +8,11 @@
 </p>
 </div>
 
+<div align="center">
+
 ![zway.app features.](https://i.ibb.co/r5wBd3w/boxs-new.png)
+
+</div>
 
 ### ✨ **Features**
 
