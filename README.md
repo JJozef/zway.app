@@ -1,9 +1,11 @@
 <div align="center">
+
 ![zway.app logo.](https://zway.vercel.app/favicon.ico)
-<h3>
- zway.app
-</h3>
-<p>Your go-to web playground for HTML, CSS, and JavaScript. Code, tweak, and visualize your creations instantly with our live editor.</p>
+
+<h3>zway.app</h3>
+<p>
+    Your go-to web playground for HTML, CSS, and JavaScript. Code, tweak, and visualize your creations instantly with our live editor.
+</p>
 </div>
 
 ![zway.app features.](https://i.ibb.co/r5wBd3w/boxs-new.png)
