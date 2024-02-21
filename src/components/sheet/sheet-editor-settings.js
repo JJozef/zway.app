@@ -1,10 +1,10 @@
 import { Input } from '@/components/ui/input'
 import { useForm } from 'react-hook-form'
-import { Checkbox } from './ui/checkbox'
-import { Badge } from './ui/badge'
+import { Checkbox } from '../ui/checkbox'
+import { Badge } from '../ui/badge'
 import { useEditorContext } from '@/context/editor-configs'
-import { Button } from './ui/button'
-import { SettingsIcon } from './ui/icons'
+import { Button } from '../ui/button'
+import { SettingsIcon } from '../ui/icons'
 import {
   Sheet,
   SheetContent,

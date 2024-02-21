@@ -24,8 +24,8 @@ import {
   TerminalIcon2
 } from '@/components/ui/icons'
 import Link from 'next/link'
-import ModalDependencies from './modal-dependencies'
-import SheetEditorSettings from './sheet-editor-settings'
+import ModalDependencies from './modal/modal-dependencies'
+import SheetEditorSettings from './sheet/sheet-editor-settings'
 import useCopyToClipboard from '@/lib/hooks/use-copy-to-clipboard'
 
 export default function MenubarNavigation() {

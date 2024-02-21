@@ -10,7 +10,7 @@ import {
   TooltipProvider,
   TooltipTrigger
 } from '@/components/ui/tooltip'
-import CodeEditorCode from './code-with-monaco'
+import CodeEditorSandbox from './code-with-monaco'
 
 export default function CodeEditorBoxes({
   html,
@@ -29,7 +29,7 @@ export default function CodeEditorBoxes({
         <ResizablePanelGroup direction='horizontal'>
           <ResizablePanel defaultSize={50}>
             <section className='h-full w-full relative [&>.monaco-editor]:w-[100%_!important]'>
-              <CodeEditorCode
+              <CodeEditorSandbox
                 value={html}
                 setValue={handleSetValue}
                 language='html'
@@ -54,7 +54,7 @@ export default function CodeEditorBoxes({
           />
           <ResizablePanel defaultSize={50}>
             <section className='h-full w-full relative'>
-              <CodeEditorCode
+              <CodeEditorSandbox
                 value={css}
                 setValue={handleSetValue}
                 language='css'
@@ -83,7 +83,7 @@ export default function CodeEditorBoxes({
         <ResizablePanelGroup direction='horizontal'>
           <ResizablePanel defaultSize={50}>
             <section className='h-full w-full relative'>
-              <CodeEditorCode
+              <CodeEditorSandbox
                 value={js}
                 setValue={handleSetValue}
                 language='javascript'

@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react'
 import { useEditorContext } from '@/context/editor-configs'
 import { DEFAULT_EDITOR_STATE, EDITOR_OPTIONS } from '@/lib/contants'
+import { emmetHTML } from 'emmet-monaco-es'
 import { Ring } from '@uiball/loaders'
 import Editor from '@monaco-editor/react'
 
-export default function CodeEditorCode({
+export default function CodeEditorSandbox({
   value,
   setValue,
   language,
@@ -40,6 +41,9 @@ export default function CodeEditorCode({
       onChange={(newValue) => setValue(newValue || '', language)}
       options={options}
       loading={<Ring size={30} speed={1} color='currentColor' />}
+      onMount={({ monaco }) => {
+        emmetHTML(monaco)
+      }}
       {...options}
       {...props}
     />

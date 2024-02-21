@@ -1,6 +1,6 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { CSSIcon, HTMLIcon, JSIcon, Laptop2Icon } from '@/components/ui/icons'
-import CodeEditorCode from './code-with-monaco'
+import CodeEditorSandbox from './code-with-monaco'
 
 export default function CodeEditorTabs({
   html,
@@ -40,7 +40,7 @@ export default function CodeEditorTabs({
         value='html'
         className='grow m-0 h-full w-full [&>section_>_div_>_.monaco-editor]:w-[100%_!important] [&>section_>_div_>_.monaco-editor]:h-[100%_!important]'
       >
-        <CodeEditorCode
+        <CodeEditorSandbox
           language='html'
           setValue={handleSetValue}
           value={html}
@@ -50,13 +50,13 @@ export default function CodeEditorTabs({
         value='css'
         className='grow m-0 h-full w-full [&>section_>_div_>_.monaco-editor]:w-[100%_!important] [&>section_>_div_>_.monaco-editor]:h-[100%_!important]'
       >
-        <CodeEditorCode language='css' setValue={handleSetValue} value={css} />
+        <CodeEditorSandbox language='css' setValue={handleSetValue} value={css} />
       </TabsContent>
       <TabsContent
         value='javascript'
         className='grow m-0 h-full w-full [&>section_>_div_>_.monaco-editor]:w-[100%_!important] [&>section_>_div_>_.monaco-editor]:h-[100%_!important]'
       >
-        <CodeEditorCode
+        <CodeEditorSandbox
           language='javascript'
           setValue={handleSetValue}
           value={js}
