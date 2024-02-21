@@ -32,12 +32,7 @@ export default function Home() {
 
   useEffect(() => {
     ReplaceStateURL(url)
-
-    setSharedData((prevSharedData) => ({
-      ...prevSharedData,
-      url,
-      urlBlob
-    }))
+    setSharedData({ url, urlBlob })
   }, [code, url])
 
   const {
