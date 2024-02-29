@@ -10,7 +10,7 @@
 
 <div align="center">
 
-![zway.app features.](https://i.ibb.co/r5wBd3w/boxs-new.png)
+![zway.app features.](https://i.ibb.co/Pm5C37H/zway-app.png)
 
 </div>
 
