@@ -27,6 +27,7 @@ import Link from 'next/link'
 import ModalDependencies from './modal/modal-dependencies'
 import SheetEditorSettings from './sheet/sheet-editor-settings'
 import useCopyToClipboard from '@/lib/hooks/use-copy-to-clipboard'
+import ModalDownload from './modal/modal-download'
 
 export default function MenubarNavigation() {
   const { sharedData } = useAppSharedDataContext()
@@ -57,13 +58,10 @@ export default function MenubarNavigation() {
               <TerminalIcon2 className='w-4 h-4 min-w-4' />
               Terminal
             </MenubarItem>
-            <MenubarItem
-              className='flex items-center gap-2 cursor-pointer'
-              disabled
-            >
+            <ModalDownload disabled={!sharedData.url}>
               <DownloadIcon className='w-4 h-4 min-w-4' />
               Download
-            </MenubarItem>
+            </ModalDownload>
             <MenubarItem
               className='flex items-center gap-2 cursor-pointer'
               onClick={copyLink}
@@ -83,13 +81,13 @@ export default function MenubarNavigation() {
             </MenubarItem>
             <MenubarItem
               className='flex items-center gap-2 cursor-pointer'
+              disabled={!sharedData.url}
               asChild
             >
               <Link
                 href={sharedData.urlBlob}
                 target='_blank'
                 rel='noopener noreferrer'
-                disabled={!sharedData.urlBlob}
                 prefetch={false}
               >
                 <ScreenShareIcon className='w-4 h-4 min-w-4' />

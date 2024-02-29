@@ -237,3 +237,18 @@ export const ScreenShareIcon = ({ className }) => (
     <path d='M13 3H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-3M8 21h8M12 17v4M17 8l5-5M17 3h5v5' />
   </svg>
 )
+
+export const FolderArchiveIcon = ({ className }) => (
+  <svg
+    className={cn('h-6 w-6 min-w-6', className)}
+    viewBox='0 0 24 24'
+    strokeWidth='1.5'
+    stroke='currentColor'
+    fill='none'
+    strokeLinecap='round'
+    strokeLinejoin='round'
+  >
+    <circle cx='15' cy='19' r='2' />
+    <path d='M20.9 19.8A2 2 0 0 0 22 18V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h5.1M15 11v-1M15 17v-2' />
+  </svg>
+)

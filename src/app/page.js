@@ -32,7 +32,7 @@ export default function Home() {
 
   useEffect(() => {
     ReplaceStateURL(url)
-    setSharedData({ url, urlBlob })
+    setSharedData({ url, urlBlob, ...code })
   }, [code, url])
 
   const {
@@ -43,6 +43,7 @@ export default function Home() {
 
   useEffect(() => {
     setCode({ html: decodedHtml, css: decodedCss, javascript: decodedJs })
+    setSharedData({ html: decodedHtml, css: decodedCss, javascript: decodedJs })
   }, [decodedHtml, decodedCss, decodedJs])
 
   if (isDesktop && layoutEditors === EDITOR_LAYOUTS.boxes) {
