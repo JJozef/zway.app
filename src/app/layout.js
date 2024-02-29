@@ -7,6 +7,7 @@ import { ThemeProvider } from '@/provider/theme-provider'
 
 import AppProviders from '@/provider/app-providers'
 import MenubarNavigation from '@/components/menubar-navigation'
+import { siteConfig } from '../../config/site'
 
 export const fontSans = FontSans({
   subsets: ['latin'],
@@ -14,9 +15,51 @@ export const fontSans = FontSans({
 })
 
 export const metadata = {
-  title: 'zway.app | Real-time HTML, CSS, JavaScript Playground',
-  description:
-    'Your go-to web playground for HTML, CSS, and JavaScript. Code, tweak, and visualize your creations instantly with our live editor.'
+  title: siteConfig.name,
+  description: siteConfig.description,
+  keywords: [
+    'Next.js',
+    'React',
+    'Tailwind CSS',
+    'Playground',
+    'HTML',
+    'CSS',
+    'JavaScript',
+    'Code',
+    'Editor',
+    'Real-time',
+    'Monaco Editor'
+  ],
+  authors: [
+    {
+      name: 'Jose Ignacio (@Jozefzin)',
+      url: 'https://zway.vercel.app'
+    }
+  ],
+  creator: 'Jose Ignacio (@Jozefzin)',
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: siteConfig.url,
+    title: siteConfig.name,
+    description: siteConfig.description,
+    siteName: siteConfig.name,
+    images: [
+      {
+        url: siteConfig.ogImage,
+        width: 1200,
+        height: 630,
+        alt: siteConfig.name
+      }
+    ]
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: siteConfig.name,
+    description: siteConfig.description,
+    images: [siteConfig.ogImage],
+    creator: '@Jozefzin'
+  }
 }
 
 export default function RootLayout({ children }) {
