@@ -16,25 +16,7 @@ export const fontSans = FontSans({
 export const metadata = {
   title: 'zway.app | Real-time HTML, CSS, JavaScript Playground',
   description:
-    'Your go-to web playground for HTML, CSS, and JavaScript. Code, tweak, and visualize your creations instantly with our live editor.',
-  url: 'https://zway.vercel.app',
-  siteName: 'zway.app',
-  images: [
-    {
-      url: 'https://zway.vercel.app/zway-app.png',
-      width: 800,
-      height: 600,
-      alt: 'zway.app'
-    },
-    {
-      url: 'https://zway.vercel.app/zway-app.png',
-      width: 1800,
-      height: 1600,
-      alt: 'zway.app'
-    }
-  ],
-  locale: 'en_US',
-  type: 'website'
+    'Your go-to web playground for HTML, CSS, and JavaScript. Code, tweak, and visualize your creations instantly with our live editor.'
 }
 
 export default function RootLayout({ children }) {
