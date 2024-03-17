@@ -5,6 +5,7 @@ import { Badge } from '../ui/badge'
 import { useEditorContext } from '@/context/editor-configs'
 import { Button } from '../ui/button'
 import { SettingsIcon } from '../ui/icons'
+import { toast } from 'sonner'
 import {
   Sheet,
   SheetContent,
@@ -63,6 +64,8 @@ export default function SheetEditorSettings({ children }) {
     }
 
     setEditorState(valuesToSave)
+
+    toast.success('Settings saved')
   }
 
   return (
