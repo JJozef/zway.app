@@ -1,13 +1,15 @@
 import '@/styles/globals.css'
+
+import { siteConfig } from '@/root/config/site'
 import { Inter as FontSans } from 'next/font/google'
 
 import { cn } from '@/lib/utils'
+import { Toaster } from '@/components/ui/sonner'
 
 import { ThemeProvider } from '@/provider/theme-provider'
 
 import AppProviders from '@/provider/app-providers'
 import MenubarNavigation from '@/components/menubar-navigation'
-import { siteConfig } from '../../config/site'
 
 export const fontSans = FontSans({
   subsets: ['latin'],
@@ -83,6 +85,12 @@ export default function RootLayout({ children }) {
               <MenubarNavigation />
               {children}
             </main>
+            <Toaster
+              position='top-center'
+              expand={false}
+              richColors
+              closeButton
+            />
           </AppProviders>
         </ThemeProvider>
       </body>
