@@ -1,6 +1,6 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { CSSIcon, HTMLIcon, JSIcon, Laptop2Icon } from '@/components/ui/icons'
-import CodeEditorSandbox from './code-with-monaco'
+import CodeEditorSandbox from '@/components/code-with-monaco'
 
 export default function CodeEditorTabs({
   html,

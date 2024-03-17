@@ -2,13 +2,13 @@
 
 import { useState } from 'react'
 import { cn } from '@/lib/utils'
-import { Button } from '../ui/button'
-import { Label } from '../ui/label'
-import { Switch } from '../ui/switch'
+import { Button } from '@/components/ui/button'
+import { Label } from '@/components/ui/label'
+import { Switch } from '@/components/ui/switch'
 import { downloadMyCode } from '@/lib/download'
 import { useEditorContext } from '@/context/editor-configs'
 import { useAppSharedDataContext } from '@/context/app-shared-data'
-import { CSSIcon, FolderArchiveIcon, HTMLIcon, JSIcon } from '../ui/icons'
+import { CSSIcon, FolderArchiveIcon, HTMLIcon, JSIcon } from '@/components/ui/icons'
 import { useMediaQuery } from '@/lib/hooks/use-media-query'
 import {
   Dialog,

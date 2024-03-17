@@ -1,7 +1,7 @@
 /* eslint-disable multiline-ternary */
 'use client'
 
-import { Button } from './ui/button'
+import { Button } from '@/components/ui/button'
 import { useAppSharedDataContext } from '@/context/app-shared-data'
 import {
   Menubar,
@@ -25,9 +25,9 @@ import {
 } from '@/components/ui/icons'
 import Link from 'next/link'
 // import ModalDependencies from './modal/modal-dependencies'
-import SheetEditorSettings from './sheet/sheet-editor-settings'
+import SheetEditorSettings from '@/components/sheet/sheet-editor-settings'
 import useCopyToClipboard from '@/lib/hooks/use-copy-to-clipboard'
-import ModalDownload from './modal/modal-download'
+import ModalDownload from '@/components/modal/modal-download'
 
 export default function MenubarNavigation() {
   const { sharedData } = useAppSharedDataContext()

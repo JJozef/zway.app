@@ -1,11 +1,13 @@
 import { Input } from '@/components/ui/input'
 import { useForm } from 'react-hook-form'
-import { Checkbox } from '../ui/checkbox'
-import { Badge } from '../ui/badge'
+import { Checkbox } from '@/components/ui/checkbox'
+import { Badge } from '@/components/ui/badge'
 import { useEditorContext } from '@/context/editor-configs'
-import { Button } from '../ui/button'
-import { SettingsIcon } from '../ui/icons'
+import { Button } from '@/components/ui/button'
+import { SettingsIcon } from '@/components/ui/icons'
 import { toast } from 'sonner'
+import { EDITOR_LAYOUTS } from '@/lib/contants'
+import { cn } from '@/lib/utils'
 import {
   Sheet,
   SheetContent,
@@ -28,8 +30,6 @@ import {
   SelectTrigger,
   SelectValue
 } from '@/components/ui/select'
-import { EDITOR_LAYOUTS } from '@/lib/contants'
-import { cn } from '@/lib/utils'
 
 export default function SheetEditorSettings({ children }) {
   const { editorState, setEditorState } = useEditorContext()

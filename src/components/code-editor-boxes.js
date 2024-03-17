@@ -10,7 +10,7 @@ import {
   TooltipProvider,
   TooltipTrigger
 } from '@/components/ui/tooltip'
-import CodeEditorSandbox from './code-with-monaco'
+import CodeEditorSandbox from '@/components/code-with-monaco'
 
 export default function CodeEditorBoxes({
   html,

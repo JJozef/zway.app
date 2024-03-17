@@ -1,13 +1,13 @@
+import { Input } from '@/components/ui/input'
+import { Badge } from '@/components/ui/badge'
 import {
   AlertDialog,
   AlertDialogContent,
   AlertDialogHeader,
   AlertDialogTitle,
-  AlertDialogTrigger
+  AlertDialogTrigger,
+  AlertDialogDescription
 } from '@/components/ui/alert-dialog'
-import { Input } from '../ui/input'
-import { AlertDialogDescription } from '@radix-ui/react-alert-dialog'
-import { Badge } from '../ui/badge'
 import Link from 'next/link'
 
 export default function ModalDependencies({ children }) {
