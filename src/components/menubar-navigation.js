@@ -14,7 +14,7 @@ import {
 } from '@/components/ui/menubar'
 import {
   ArrowUpRightSquareIcon,
-  BlocksIcon,
+  // BlocksIcon,
   CheckIcon,
   DownloadIcon,
   GitHubIcon,
@@ -24,7 +24,7 @@ import {
   TerminalIcon2
 } from '@/components/ui/icons'
 import Link from 'next/link'
-import ModalDependencies from './modal/modal-dependencies'
+// import ModalDependencies from './modal/modal-dependencies'
 import SheetEditorSettings from './sheet/sheet-editor-settings'
 import useCopyToClipboard from '@/lib/hooks/use-copy-to-clipboard'
 import ModalDownload from './modal/modal-download'
@@ -96,14 +96,14 @@ export default function MenubarNavigation() {
             </MenubarItem>
           </MenubarContent>
         </MenubarMenu>
-        <MenubarMenu>
+        {/* <MenubarMenu>
           <ModalDependencies>
             <MenubarTrigger className='flex items-center gap-2 py-1.5 px-3 cursor-pointer'>
               <BlocksIcon className='w-4 h-4 min-w-4 stroke-[2]' />
               Dependencies
             </MenubarTrigger>
           </ModalDependencies>
-        </MenubarMenu>
+        </MenubarMenu> */}
         <MenubarMenu>
           <SheetEditorSettings>
             <MenubarTrigger className='flex items-center gap-2 py-1.5 px-3 cursor-pointer'>
