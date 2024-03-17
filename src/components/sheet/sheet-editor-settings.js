@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Input } from '@/components/ui/input'
 import { useForm } from 'react-hook-form'
 import { Checkbox } from '@/components/ui/checkbox'
@@ -32,6 +33,7 @@ import {
 } from '@/components/ui/select'
 
 export default function SheetEditorSettings({ children }) {
+  const [open, setOpen] = useState(false)
   const { editorState, setEditorState } = useEditorContext()
 
   const form = useForm({
@@ -66,10 +68,11 @@ export default function SheetEditorSettings({ children }) {
     setEditorState(valuesToSave)
 
     toast.success('Settings saved')
+    setOpen(false)
   }
 
   return (
-    <Sheet>
+    <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>{children}</SheetTrigger>
       <SheetContent className='p-0'>
         <SheetHeader className='px-4 py-5'>
